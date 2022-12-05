@@ -11,11 +11,12 @@ class TenantsController < ApplicationController
         end
     end
     def create
-
+        tenant = Tenant.create(tenant_params)
+        render json: tenant, status: :created
     end
 
-    # private
-    # def tenant_params
-    #     params.permit()
-    # end
+    private
+    def tenant_params
+        params.permit(:id, :name, :phone_number, :email, :house_number, :number_of_bedrooms, :rent_amount, :is_paid)
+    end
 end
