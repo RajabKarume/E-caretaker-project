@@ -10,31 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_165132) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_083203) do
   create_table "apartments", force: :cascade do |t|
     t.string "name"
     t.string "location"
-    t.integer "tenant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "landlords", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.integer "apartment_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tenants", force: :cascade do |t|
     t.string "name"
-    t.integer "phone_number"
     t.string "email"
-    t.string "house_number"
-    t.integer "number_of_bedrooms"
-    t.integer "rent_amount"
+    t.integer "phone_number"
+    t.integer "house_number"
+    t.string "number_of_bedrooms"
+    t.integer "rent"
     t.boolean "is_paid"
+    t.integer "apartment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

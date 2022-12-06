@@ -2,18 +2,20 @@
 
 one:
   name: MyString
-  phone_number: 1
   email: MyString
-  house_number: MyString
-  number_of_bedrooms: 1
-  rent_amount: 1
+  phone_number: 1
+  house_number: 1
+  number_of_bedrooms: MyString
+  rent: 1
   is_paid: false
+  apartment_id: 1
 
 two:
   name: MyString
-  phone_number: 1
   email: MyString
-  house_number: MyString
-  number_of_bedrooms: 1
-  rent_amount: 1
+  phone_number: 1
+  house_number: 1
+  number_of_bedrooms: MyString
+  rent: 1
   is_paid: false
+  apartment_id: 1
