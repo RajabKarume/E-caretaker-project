@@ -8,29 +8,31 @@
 
 puts "🌱 seeding"
 
-puts "🦸‍♀️ tenants"
-tenants = []
-90.times do
-    tenants << Tenant.create(
-        name: Faker::Name.name, 
-        phone_number: rand(254700000000..254799999999).to_f.uniq,
-        email: Faker::Internet.email
-        house_number: rand(1..40).to_f
-        number_of_bedrooms: rand(1..4).to_f
-        rent_amount: rand(3000..70000).to_f
-        is_paid: [true, false].sample
-        apartment_id: rand(1..15).to_f
-    )
+puts "⚡ users"
+users = []
+5.times do
+    users << User.create(username: Faker::Internet.username, password_digest: Faker::Internet.password )
 end
 
 puts "⚡ apartments"
 apartments = []
 15.times do
-    apartments << Apartment.create(name:Faker::Ancient.god, location: ["Ongata Rongai", "Langata", "Ruiru", "Juja", "Roysambu", "Kileleshwa", "South B" ].sample, user_id: rand(1..5).to_f )
+    apartments << Apartment.create(name:Faker::Ancient.god, location: ["Ongata Rongai", "Langata", "Ruiru", "Juja", "Roysambu", "Kileleshwa", "South B" ].sample, user_id: rand(1..5).to_i)
 end
 
-puts "⚡ users"
-users = []
-5.times do
-    users << User.create(name: Faker::Internet.username, password_digest: Faker::Internet.password )
+puts "🦸‍♀️ tenants"
+tenants = []
+90.times do
+    tenants << Tenant.create(
+        name: Faker::Name.name, 
+        phone_number: rand(254700000000..254799999999).to_i,
+        email: Faker::Internet.email,
+        house_number: rand(1..40).to_i,
+        number_of_bedrooms: ["bedsitter", "1 bedroom", "2 bedrooms", "3 bedrooms", "4 bedrooms"].sample,
+        rent: rand(3000..70000).to_i,
+        is_paid: [true, false].sample,
+        apartment_id: rand(1..15).to_i
+    )
 end
+
+puts "😀 done seeding"
