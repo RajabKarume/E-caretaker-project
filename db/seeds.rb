@@ -11,7 +11,7 @@ puts "🌱 seeding"
 puts "⚡ users"
 users = []
 5.times do
-    users << User.create(username: Faker::Internet.username, password_digest: Faker::Internet.password )
+    users << User.create(username: Faker::Internet.username, password: Faker::Internet.password )
 end
 
 puts "⚡ apartments"

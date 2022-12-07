@@ -1,28 +1,27 @@
 class UsersController < ApplicationController
 
+    rescue_from ActiveRecord::RecordInvalid, with: :record_unprocessable    
+    # rescue_from ActiveRecord::RecordUnprocessable, with: :record_not_authorized  
+
     def index
         render json: User.all
     end
-    # def create
-    #     user = User.create(user_params)
-    #     if user.valid?
-    #         session[:user_id] = user.id
-    #         render json: user, status: :created
-    #     else
-    #         render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
-    #     end
-    # end
-    # def show
-    #     user = User.find_by(id: session[:user_id])
-    #     if user.nil?
-    #         render json: { error: "Not authorized" }, status: 401
-    #     else
-    #         render json: user, status: 201
-    #     end
-    # end
+    def create
+        user = User.create!(user_params)
+        render json: user, status: :created
 
-    # private
-    # def user_params
-    #     params.permit(:username, :password, :password_confirmation)
-    # end
+    end
+    def show
+        user = User.find_by(id: session[:user_id])
+        render json: user, status: 201
+    end
+
+    private
+    def user_params
+        params.permit(:username, :password, :password_confirmation)
+    end
+    def record_unprocessable
+        render json: { errors: ["Unprocessable"] }, status: :unprocessable_entity
+    end
+   
 end

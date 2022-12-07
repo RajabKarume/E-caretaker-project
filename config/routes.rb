@@ -5,14 +5,13 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :apartments
   resources :tenants, only: [:index]
-  resources :users, only: [:index]
+  resources :users, only: [:index, :create, :show, :update, :destroy]
 
   # get "/user", to: "users#index"
   # get "/tenant", to: "tenants#index"
   # get "/apartment", to: "apartments#index"
 
-  # post "/login", to: "sessions#create"
-  # delete "/logout", to: "sessions#destroy"
-  # post "signup", to: "users#create"
-  # get "/me", to: "users#show"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
 end
