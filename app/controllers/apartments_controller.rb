@@ -1,11 +1,11 @@
 class ApartmentsController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-    rescue_from ActiveRecord::RecordInvalid, with: :record_not_valid
 
     def index
+        user = User.find(session[:user_id])
         render json: Apartment.all
     end
     def show
+        user = User.find(session[:user_id])
         apartment = Apartment.find_by(id: params[:id])
         if apartment
             render json: apartment
@@ -14,12 +14,14 @@ class ApartmentsController < ApplicationController
         end
     end
     def create
+        user = User.find(session[:user_id])
         apartment = Apartment.create(apartment_params)
         render json: apartment, status: :created
     rescue ActiveRecord::RecordInvalid => e
         render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
     end
     def update
+        user = User.find(session[:user_id])
         apartment = Apartment.find_by(id: params[:id])
         if apartment
             apartment.update(apartment_params)
@@ -29,6 +31,7 @@ class ApartmentsController < ApplicationController
         end
     end
     def destroy
+        user = User.find(session[:user_id])
         apartment = Apartment.find_by(id: params[:id])
         if apartment
             apartment.destroy
