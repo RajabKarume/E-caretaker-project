@@ -9,15 +9,17 @@
 puts "🌱 seeding"
 
 puts "⚡ users"
-users = []
-5.times do
-    users << User.create(username: Faker::Internet.username, password: Faker::Internet.password )
-end
+user1 = User.create(username: Faker::Internet.username, password: "user1")
+user2 = User.create(username: Faker::Internet.username, password: "user2")
+user3 = User.create(username: Faker::Internet.username, password: "user3")
+user4 = User.create(username: Faker::Internet.username, password: "user4")
+user5 = User.create(username: Faker::Internet.username, password: "user5")
+
 
 puts "⚡ apartments"
 apartments = []
 15.times do
-    apartments << Apartment.create(name:Faker::Ancient.god, location: ["Ongata Rongai", "Langata", "Ruiru", "Juja", "Roysambu", "Kileleshwa", "South B" ].sample, user_id: rand(1..5).to_i)
+    apartments << Apartment.create(name:Faker::Ancient.god, location: ["Ongata Rongai", "Langata", "Ruiru", "Juja", "Roysambu", "Kileleshwa", "South B" ].sample, user_id: [user1, user2, user3, user4, user5].sample.id)
 end
 
 puts "🦸‍♀️ tenants"
