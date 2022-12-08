@@ -1,6 +1,6 @@
-namespace assets do 
-    desc "This is just a bypass rake"
+namespace :assets do 
+    desc 'bypass "bundle exec rake assets:precompile" error when deploying to Railway.app'
     task :precompile do
-        puts "This is a fake assets Rake"
+        puts 'bypass "bundle exec rake assets:precompile" error when deploying to Railway.app'
     end
 end
