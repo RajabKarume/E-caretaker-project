@@ -1,11 +1,9 @@
 class TenantsController < ApplicationController
 
     def index
-        user = User.find(session[:user_id])
-        render json: Tenant.all, status: 200
+        render json: Tenant.all
     end
     def show
-        user = User.find(session[:user_id])
         tenant = Tenant.find_by(id: params[:id])
         if tenant
             render json: tenant      
@@ -14,14 +12,12 @@ class TenantsController < ApplicationController
         end
     end
     def create
-        user = User.find(session[:user_id])
         tenant = Tenant.create(tenant_params)
         render json: tenant, status: :created
     rescue ActiveRecord::RecordInvalid => e
         render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
     end
     def update
-        user = User.find(session[:user_id])
         tenant = Tenant.find_by(id: params[:id])
         if tenant
             Tenant.update(tenant_params)
@@ -31,10 +27,9 @@ class TenantsController < ApplicationController
         end
     end
     def destroy
-        user = User.find(session[:user_id])
         tenant = Tenant.find_by(id: params[:id])
         if tenant
-            Tenant.destroy
+            tenant.destroy
             head :no_content
         else
             render json: {error: "Tenant not found"}, status: 404
