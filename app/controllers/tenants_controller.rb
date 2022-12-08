@@ -1,5 +1,4 @@
 class TenantsController < ApplicationController
-    before_action :authenticate_user
     def index
         render json: Tenant.all
     end
