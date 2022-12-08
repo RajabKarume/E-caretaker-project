@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   resources :tenants, only: [:index, :create, :show, :update, :destroy]
   resources :users, only: [:index]
 
-  # get "/user", to: "users#index"
-  # get "/tenant", to: "tenants#index"
-  # get "/apartment", to: "apartments#index"
+  
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"

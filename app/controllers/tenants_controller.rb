@@ -1,12 +1,12 @@
 class TenantsController < ApplicationController
-
+    before_action :authenticate_user
     def index
         render json: Tenant.all
     end
     def show
         tenant = Tenant.find_by(id: params[:id])
         if tenant
-            render json: tenant      
+            render json: tenant, status: 200      
         else
             render json: {error: "Tenant not found"}, status: 404
         end
@@ -21,7 +21,7 @@ class TenantsController < ApplicationController
         tenant = Tenant.find_by(id: params[:id])
         if tenant
             Tenant.update(tenant_params)
-            render json: tenant      
+            render json: tenant, status: 200      
         else
             render json: {error: "Tenant not found"}, status: 404
         end

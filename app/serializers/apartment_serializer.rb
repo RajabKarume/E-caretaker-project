@@ -1,5 +1,5 @@
 class ApartmentSerializer < ActiveModel::Serializer
-  attributes :name, :location
+  attributes :id, :name, :location, :user_id
   belongs_to :user
   has_many :tenants
 end

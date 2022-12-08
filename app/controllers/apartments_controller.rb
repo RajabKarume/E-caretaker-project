@@ -1,4 +1,5 @@
 class ApartmentsController < ApplicationController
+    before_action :authenticate_user
 
     def index
         render json: Apartment.all
@@ -6,7 +7,7 @@ class ApartmentsController < ApplicationController
     def show
         apartment = Apartment.find_by(id: params[:id])
         if apartment
-            render json: apartment
+            render json: apartment, status: 200
         else
             render json: { error: "Apartment not found" }, status: 404
         end
@@ -21,7 +22,7 @@ class ApartmentsController < ApplicationController
         apartment = Apartment.find_by(id: params[:id])
         if apartment
             apartment.update(apartment_params)
-            render json: apartment
+            render json: apartment, status: 200
         else
             render json: { error: "Apartment not found" }, status: 404
         end
