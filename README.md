@@ -26,6 +26,13 @@ Things you may want to cover:
 
 created by Rajab Karume 9th December 2022
 
+# FRONT-END REPOSITORY
+
+The front end reppository is on https://github.com/RajabKarume/E-caretaker-front-end.git
+
+and the deployed website on https://e-caretaker-front-end.vercel.app/
+
+
 # SETUP INSTALLATION
 
 - Clone the repository
