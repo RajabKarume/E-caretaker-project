@@ -9,11 +9,11 @@
 puts "🌱 seeding"
 
 puts "⚡ users"
-user1 = User.create(username: Faker::Internet.username, password: "user1")
-user2 = User.create(username: Faker::Internet.username, password: "user2")
-user3 = User.create(username: Faker::Internet.username, password: "user3")
-user4 = User.create(username: Faker::Internet.username, password: "user4")
-user5 = User.create(username: Faker::Internet.username, password: "user5")
+user1 = User.create(username: "Rajab", password: "user1")
+user2 = User.create(username: "Vincent", password: "user2")
+user3 = User.create(username: "Zablon", password: "user3")
+user4 = User.create(username: "Mercy", password: "user4")
+user5 = User.create(username: "Andrew", password: "user5")
 
 
 puts "⚡ apartments"

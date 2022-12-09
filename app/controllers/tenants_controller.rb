@@ -11,10 +11,9 @@ class TenantsController < ApplicationController
         end
     end
     def create
-        tenant = Tenant.create(tenant_params)
+        user = User.find(session[:user_id])
+        tenant = Tenant.create( name: tenant_params[:name], email: tenant_params[:email], phone_number: tenant_params[:phone_number], house_number: tenant_params[:house_number], number_of_bedrooms: tenant_params[:number_of_bedrooms], rent: tenant_params[:rent], is_paid: tenant_params[:is_paid])
         render json: tenant, status: :created
-    rescue ActiveRecord::RecordInvalid => e
-        render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
     end
     def update
         tenant = Tenant.find_by(id: params[:id])
@@ -27,12 +26,12 @@ class TenantsController < ApplicationController
     end
     def destroy
         tenant = Tenant.find_by(id: params[:id])
-        if tenant
+        # if tenant
             tenant.destroy
             head :no_content
-        else
-            render json: {error: "Tenant not found"}, status: 404
-        end
+        # else
+        #     render json: {error: "Tenant not found"}, status: 404
+        # end
     end
 
     private
